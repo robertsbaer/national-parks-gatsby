@@ -8,10 +8,16 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { ThemeProvider } from "styled-components"
+
+import "../../css/normalize.css"
+import "../../css/fonts.css"
 
 import Header from "./header"
 import Footer from "./footer"
-import "./normalize.css"
+import { colors, breakpoints } from "../../css/variables"
+
+
 
 /**
  * This layout component is doing a lot of stuff
@@ -58,12 +64,20 @@ const Layout = ({ children }) => {
    * JSX is looking for a single node to return to the browser but we normally want to return a bunch of stuff
    * The fragment gives React a single node without us having to wrap it another <div>
    * And it allows us to return whatever we want inside of that - regular JSX rules apply
+   * 
+   * ThemeProvider is a cool little thing from styled-components I like
+   * It allows you send your site variables down to all your components on a prop (the `theme` prop)
+   * This gives all child styled-components easy access to the same layout features
    */
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <main>{children}</main>
-      <Footer />
+      <ThemeProvider theme={colors, breakpoints}>
+        <>
+          <Header siteTitle={data.site.siteMetadata.title} />
+          <main>{children}</main>
+          <Footer />
+        </>
+      </ThemeProvider>
     </>
   )
 }

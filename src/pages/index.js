@@ -1,21 +1,34 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
+import Image from "gatsby-image"
 
 import Layout from "../components/global/layout"
-import Image from "../components/image"
 import SEO from "../components/global/seo"
+import Carousel from "../components/carousel/Carousel"
 
-const IndexPage = () => (
+const IndexPage = (props) => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <h1>Carousel Time</h1>
+    <p>Try it out...</p>
+    <Carousel images={ props.data } />
   </Layout>
 )
 
 export default IndexPage
+
+export const carouselImageQuery = graphql`
+  query {
+    carouselImages: allFile(filter: { extension: { eq: "jpg" } }) {
+      edges {
+        node {
+          childImageSharp {
+            fluid(maxWidth: 800, quality: 90) {
+              ...GatsbyImageSharpFluid
+            }
+          }    
+        }
+      }
+    }
+  }
+`

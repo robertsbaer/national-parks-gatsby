@@ -1,5 +1,3 @@
-import { keyframes } from "styled-components"
-
 /**
  * What is this weird little file?
  * 
@@ -18,7 +16,7 @@ import { keyframes } from "styled-components"
  */
 
 // Variables 
-export const variables = { 
+const variables = { 
   colors: {
     lightGray: `#d2d2d2`,
     lightestGray: `#e7e7e7`,
@@ -50,12 +48,4 @@ export const variables = {
   }
 }
 
-
-// One of the cool things you can do with styled-components is set global animations
-// This is a simple one but effective
-export const simpleEntry = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-`
+export default variables

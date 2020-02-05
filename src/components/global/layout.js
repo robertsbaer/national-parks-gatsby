@@ -10,8 +10,6 @@ import variables from "../../css/variables"
 import Header from "./header"
 import Footer from "./footer"
 
-
-
 /**
  * This layout component is doing a lot of stuff
  * It's a functional component - why? You can see Layout is set equal to an arrow function

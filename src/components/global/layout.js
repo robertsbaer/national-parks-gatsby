@@ -1,10 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
@@ -12,10 +5,10 @@ import { ThemeProvider } from "styled-components"
 
 import "../../css/normalize.css"
 import "../../css/fonts.css"
+import variables from "../../css/variables"
 
 import Header from "./header"
 import Footer from "./footer"
-import { colors, breakpoints } from "../../css/variables"
 
 
 
@@ -68,10 +61,17 @@ const Layout = ({ children }) => {
    * ThemeProvider is a cool little thing from styled-components I like
    * It allows you send your site variables down to all your components on a prop (the `theme` prop)
    * This gives all child styled-components easy access to the same layout features
+   * Check out /src/components/css/variables.js to see more
+   * 
+   * Now, look at the prop going into `siteTitle` on the Header component - where is that coming from?
+   * `data` is the prop gatsby places GraphQL responses on
+   * In `useStaticQuery`, remember we queried for site > siteMetadata > title
+   * Gatsby mutated the GraphQL response into an object with those same keys
+   * Add it all together and our title can be found on data.site.siteMetadata.title
    */
   return (
     <>
-      <ThemeProvider theme={colors, breakpoints}>
+      <ThemeProvider theme={variables}>
         <>
           <Header siteTitle={data.site.siteMetadata.title} />
           <main>{children}</main>

@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "national-parks-homepage-gatsby",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Some Walk-through on Gatsby and basic React Features",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "John Serrao <john@thor-studio.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.19.7",
